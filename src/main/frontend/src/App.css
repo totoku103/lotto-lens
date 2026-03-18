@@ -1,0 +1,785 @@
+/* ===== Reset & Base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== App Layout ===== */
+.app {
+  min-height: 100vh;
+  background: #0f1117;
+  color: #e2e8f0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px 60px;
+}
+
+/* ===== Header ===== */
+.app-header {
+  text-align: center;
+  padding: 48px 0 24px;
+}
+
+.app-header h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #f6c90e 0%, #f97316 60%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  margin-top: 8px;
+  font-size: 1rem;
+  color: #94a3b8;
+}
+
+/* ===== Tab Bar ===== */
+.tab-bar {
+  display: flex;
+  gap: 4px;
+  background: #1e2130;
+  border: 1px solid #2d3348;
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 8px;
+  width: 100%;
+  max-width: 860px;
+}
+
+.tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 10px 0;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.tab-btn:hover:not(.tab-active) {
+  background: #252840;
+  color: #94a3b8;
+}
+
+.tab-active {
+  background: linear-gradient(135deg, #f6c90e, #f97316);
+  color: #0f1117 !important;
+}
+
+/* ===== Main Content ===== */
+.app-main {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ===== Control Panel ===== */
+.control-panel {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #1e2130;
+  border: 1px solid #2d3348;
+  border-radius: 14px;
+  padding: 20px 24px;
+  flex-wrap: wrap;
+}
+
+.count-label {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.count-select {
+  appearance: none;
+  background: #252840;
+  color: #e2e8f0;
+  border: 1px solid #3d4460;
+  border-radius: 8px;
+  padding: 8px 36px 8px 14px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  transition: border-color 0.2s;
+}
+
+.count-select:focus {
+  outline: none;
+  border-color: #f6c90e;
+}
+
+.generate-btn {
+  margin-left: auto;
+  background: linear-gradient(135deg, #f6c90e, #f97316);
+  color: #0f1117;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 28px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.generate-btn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.generate-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.generate-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== Simulation Control ===== */
+.sim-info-text {
+  flex: 1;
+}
+
+.sim-btn-group {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.sim-start-btn {
+  margin-left: 0;
+}
+
+.stop-btn {
+  background: #2d1515;
+  border: 1px solid #7f1d1d;
+  color: #fca5a5;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.stop-btn:hover {
+  background: #3d1a1a;
+}
+
+/* ===== Progress ===== */
+.progress-section {
+  background: #1e2130;
+  border: 1px solid #2d3348;
+  border-radius: 14px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-label {
+  font-size: 0.95rem;
+  color: #94a3b8;
+}
+
+.progress-pct {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f6c90e;
+}
+
+.progress-track {
+  width: 100%;
+  height: 12px;
+  background: #252840;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f6c90e, #f97316);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+/* ===== Elapsed Time ===== */
+.elapsed-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.elapsed-label {
+  color: #94a3b8;
+}
+
+.elapsed-value {
+  font-weight: 700;
+  color: #fbbf24;
+  font-size: 1.05rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== Unique Combo Info ===== */
+.unique-combo-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #252840;
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+
+.unique-combo-label {
+  font-size: 0.85rem;
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.unique-combo-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.unique-combo-total {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #475569;
+}
+
+.unique-combo-pct {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4ade80;
+  margin-left: auto;
+}
+
+.sim-complete-badge {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #4ade80;
+  animation: fadeInPop 0.4s ease both;
+}
+
+@keyframes fadeInPop {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ===== Chart Section ===== */
+.chart-section {
+  background: #1e2130;
+  border: 1px solid #2d3348;
+  border-radius: 14px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.section-desc {
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* ===== Distribution Chart ===== */
+.dist-chart-wrapper {
+  position: relative;
+  padding-left: 10px;
+}
+
+.dist-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 200px;
+  padding-bottom: 26px;
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+.dist-bar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 16px;
+  flex-shrink: 0;
+  height: 100%;
+  position: relative;
+}
+
+.dist-bar-fill {
+  width: 100%;
+  border-radius: 3px 3px 0 0;
+  transition: height 0.3s ease;
+  min-height: 2px;
+  cursor: pointer;
+}
+
+.dist-bar-fill:hover {
+  opacity: 0.8;
+}
+
+.dist-bar-label {
+  position: absolute;
+  bottom: -22px;
+  font-size: 0.6rem;
+  color: #64748b;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.dist-axis-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding: 0 4px;
+}
+
+.dist-axis-y-label {
+  font-size: 0.72rem;
+  color: #475569;
+}
+
+.dist-axis-x-label {
+  font-size: 0.72rem;
+  color: #475569;
+}
+
+.chart-empty {
+  text-align: center;
+  color: #475569;
+  padding: 32px 0;
+  font-size: 0.9rem;
+}
+
+/* ===== Distribution Legend ===== */
+.dist-legend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+.dist-legend-item {
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.dist-legend-low {
+  background: rgb(0, 120, 255);
+  color: #fff;
+}
+
+.dist-legend-high {
+  background: rgb(255, 40, 0);
+  color: #fff;
+}
+
+.dist-legend-arrow {
+  color: #475569;
+}
+
+/* ===== Stats Full ===== */
+.stats-full {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.stats-card {
+  background: #1e2130;
+  border: 1px solid #2d3348;
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+
+.stats-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 14px;
+}
+
+.stats-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stats-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stats-rank {
+  font-size: 0.78rem;
+  color: #475569;
+  min-width: 18px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.stats-cnt {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  margin-left: auto;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* ===== Combination Balls Row ===== */
+.combo-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.combo-balls {
+  display: flex;
+  gap: 3px;
+  flex-wrap: nowrap;
+}
+
+/* ===== Frequency Group ===== */
+.freq-group-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.freq-group {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #2d3348;
+}
+
+.freq-group-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #252840;
+  border: none;
+  border-left: 4px solid #64748b;
+  padding: 10px 14px;
+  cursor: pointer;
+  color: #e2e8f0;
+  text-align: left;
+  transition: background 0.15s;
+  gap: 8px;
+}
+
+.freq-group-header:hover {
+  background: #2d3356;
+}
+
+.freq-group-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.freq-group-count {
+  font-size: 0.88rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.freq-group-sub {
+  font-size: 0.8rem;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.freq-group-icon {
+  font-size: 0.7rem;
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.freq-group-body {
+  background: #1a1d2e;
+  padding: 10px 12px;
+}
+
+.freq-group-combos {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.freq-group-combos::-webkit-scrollbar {
+  width: 4px;
+}
+
+.freq-group-combos::-webkit-scrollbar-track {
+  background: #1a1d2e;
+}
+
+.freq-group-combos::-webkit-scrollbar-thumb {
+  background: #2d3348;
+  border-radius: 2px;
+}
+
+.freq-group-too-many {
+  text-align: center;
+  color: #475569;
+  font-size: 0.85rem;
+  padding: 14px 0;
+}
+
+/* ===== Combo Pending ===== */
+.combo-pending {
+  text-align: center;
+  color: #475569;
+  font-size: 0.88rem;
+  padding: 24px 0;
+}
+
+/* ===== Lotto Balls ===== */
+.lotto-ball {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+}
+
+/* Small lotto ball for combo stats */
+.lotto-ball-sm {
+  width: 26px !important;
+  height: 26px !important;
+  font-size: 0.65rem !important;
+}
+
+/* Korean Lotto colors */
+.ball-yellow {
+  background: radial-gradient(circle at 35% 35%, #ffe566, #f6c90e);
+}
+
+.ball-blue {
+  background: radial-gradient(circle at 35% 35%, #60a5fa, #2563eb);
+}
+
+.ball-red {
+  background: radial-gradient(circle at 35% 35%, #f87171, #dc2626);
+}
+
+.ball-gray {
+  background: radial-gradient(circle at 35% 35%, #94a3b8, #64748b);
+}
+
+.ball-green {
+  background: radial-gradient(circle at 35% 35%, #4ade80, #16a34a);
+}
+
+/* ===== Legend ===== */
+.legend {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: #94a3b8;
+}
+
+.legend-ball {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+}
+
+/* ===== Lotto Cards ===== */
+.sets-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lotto-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: #1e2130;
+  border: 1px solid #2d3348;
+  border-radius: 14px;
+  padding: 16px 22px;
+  animation: slideIn 0.35s ease both;
+  transition: border-color 0.2s;
+}
+
+.lotto-card:hover {
+  border-color: #f6c90e44;
+}
+
+.set-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748b;
+  min-width: 24px;
+}
+
+.ball-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ===== Error ===== */
+.error-msg {
+  background: #2d1515;
+  border: 1px solid #7f1d1d;
+  color: #fca5a5;
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 0.9rem;
+}
+
+/* ===== Empty State ===== */
+.empty-state {
+  text-align: center;
+  color: #475569;
+  font-size: 0.95rem;
+  padding: 48px 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 620px) {
+  .app-header h1 {
+    font-size: 2rem;
+  }
+
+  .control-panel {
+    padding: 16px;
+    gap: 10px;
+  }
+
+  .generate-btn {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .sim-btn-group {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .sim-start-btn {
+    flex: 1;
+  }
+
+  .lotto-ball {
+    width: 38px;
+    height: 38px;
+    font-size: 0.85rem;
+  }
+
+  .lotto-ball-sm {
+    width: 22px !important;
+    height: 22px !important;
+    font-size: 0.58rem !important;
+  }
+
+  .ball-row {
+    gap: 7px;
+  }
+
+  .lotto-card {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  .stats-full {
+    grid-template-columns: 1fr;
+  }
+
+  .dist-chart {
+    height: 140px;
+  }
+
+  .combo-balls {
+    gap: 2px;
+  }
+
+  .unique-combo-info {
+    gap: 6px;
+  }
+}

@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: lotto-lens
+
+server:
+  port: 8081
